@@ -7,7 +7,8 @@ import '../styles/normalize'
 
 import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'
-import LayoutMain from '../components/LayoutMain'
+// import LayoutMain from '../components/LayoutMain'
+import ProjectComponent from '../components/Projects';
 import { Project } from '../typings'
 
 interface StaticQueryProps {
@@ -38,7 +39,7 @@ const IndexLayout: React.FC<Props> = ({ children }) => (
             description
           }
         }
-        allStrapiArticle {
+        allStrapiProject {
           edges {
             node {
               strapiId
@@ -62,6 +63,7 @@ const IndexLayout: React.FC<Props> = ({ children }) => (
               }
             }
           }
+        }
       }
     `}
     render={(data: StaticQueryProps) => (
@@ -74,7 +76,13 @@ const IndexLayout: React.FC<Props> = ({ children }) => (
           ]}
         />
         <Header title={data.site.siteMetadata.title} />
-        <LayoutMain>{children}</LayoutMain>
+        <div className="uk-section">
+          <div className="uk-container uk-container-large">
+            <h1>Profile Page</h1>
+            <ProjectComponent projects={data.allStrapiProject.edges} />
+            {children}
+          </div>
+        </div>
       </LayoutRoot>
     )}
   />

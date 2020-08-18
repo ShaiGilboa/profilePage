@@ -41,44 +41,49 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const allMarkdown = await graphql(`
-    {
-      allMarkdownRemark(limit: 1000) {
-        edges {
-          node {
-            fields {
-              layout
-              slug
-            }
-          }
+  const results = await graphql(`
+  {
+    projects: allStrapiArticle {
+      edges {
+        node {
+          strapiId
         }
       }
     }
+    categories: allStrapiCategory {
+      edges {
+        node {
+          strapiId
+        }
+      }
+    }
+  }
   `)
 
-  if (allMarkdown.errors) {
-    console.error('allMarkdown.errors gatsby-node.js', allMarkdown.errors)
-    throw new Error(allMarkdown.errors)
+  if (results.errors) {
+    console.error('results.errors gatsby-node.js', results.errors)
+    throw new Error(results.errors)
   }
 
-  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    const { slug, layout } = node.fields
+  const projects = results.data.projects.edges;
+  const categories = results.data.categories.edges;
 
+  projects.forEach((project, index) => {
     createPage({
-      path: slug,
-      // This will automatically resolve the template to a corresponding
-      // `layout` frontmatter in the Markdown.
-      //
-      // Feel free to set any `layout` as you'd like in the frontmatter, as
-      // long as the corresponding template file exists in src/templates.
-      // If no template is set, it will fall back to the default `page`
-      // template.
-      //
-      // Note that the template has to exist first, or else the build will fail.
-      component: path.resolve(`./src/templates/${layout || 'page'}.tsx`),
+      path: `/projects/${project.node.strapiId}`,
+      component: require.resolve('./src/templates/project.tsx'),
       context: {
-        // Data passed to context is available in page queries as GraphQL variables.
-        slug
+        id: project.node.strapiId
+      }
+    })
+  })
+
+  categories.forEach((category, index) => {
+    createPage({
+      path: `/category/${category.node.strapiId}`,
+      component: require.resolve('./src/templates/category.tsx'),
+      context: {
+        id: category.node.strapiId
       }
     })
   })
