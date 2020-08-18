@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_project_projects",
+  "info": {
+    "name": "project",
+    "icon": "external-link-alt"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": true
+    },
+    "categories": {
+      "collection": "category"
+    }
+  }
+}

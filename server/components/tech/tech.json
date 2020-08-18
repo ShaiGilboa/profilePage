@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_tech_teches",
+  "info": {
+    "name": "tech",
+    "icon": "file-code"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "used": {
+      "type": "boolean"
+    }
+  }
+}
