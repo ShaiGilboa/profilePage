@@ -2,7 +2,7 @@
   "kind": "collectionType",
   "collectionName": "projects",
   "info": {
-    "name": "projects"
+    "name": "project"
   },
   "options": {
     "increments": true,
@@ -31,10 +31,8 @@
       "type": "richtext",
       "required": true
     },
-    "project": {
-      "type": "component",
-      "repeatable": true,
-      "component": "project.project"
+    "skills": {
+      "collection": "category"
     }
   }
 }

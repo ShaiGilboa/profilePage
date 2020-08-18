@@ -2,16 +2,21 @@
   "kind": "collectionType",
   "collectionName": "categories",
   "info": {
-    "name": "tech"
+    "name": "skill"
   },
   "options": {
     "increments": true,
     "timestamps": true
   },
   "attributes": {
-    "category": {
+    "type": {
       "type": "string",
       "required": true
+    },
+    "tech_used": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tech.tech"
     }
   }
 }

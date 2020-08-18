@@ -12,6 +12,9 @@
     },
     "used": {
       "type": "boolean"
+    },
+    "skills": {
+      "collection": "category"
     }
   }
 }

@@ -8,6 +8,7 @@ import '../styles/normalize'
 import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
+import { Project } from '../typings'
 
 interface StaticQueryProps {
   site: {
@@ -16,10 +17,18 @@ interface StaticQueryProps {
       description: string
       keywords: string
     }
+  },
+  allStrapiProject: {
+    edges: Project[],
   }
 }
 
-const IndexLayout: React.FC = ({ children }) => (
+interface Props {
+  readonly title?: string,
+  readonly children: React.ReactNode,
+}
+
+const IndexLayout: React.FC<Props> = ({ children }) => (
   <StaticQuery
     query={graphql`
       query IndexLayoutQuery {
@@ -29,6 +38,30 @@ const IndexLayout: React.FC = ({ children }) => (
             description
           }
         }
+        allStrapiArticle {
+          edges {
+            node {
+              strapiId
+              title
+              description
+              link_to_project
+              image {
+                childImageSharp {
+                    fluid(maxWidth: 595, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                      ...GatsbyImageSharpFluidLimitPresentationSize
+                    }
+                  }
+              }
+              skills {
+                type
+                tech_used {
+                  title
+                  used
+                }
+              }
+            }
+          }
       }
     `}
     render={(data: StaticQueryProps) => (
