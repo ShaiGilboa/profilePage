@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const results = await graphql(`
   {
-    projects: allStrapiArticle {
+    projects: allStrapiProjects {
       edges {
         node {
           strapiId

@@ -25,7 +25,7 @@ interface ProjectProps {
 
 export const query = graphql`
   query ProjectQuery($id: Int!) {
-    strapiProject(strapiId: { eq: $id }) {
+    strapiProjects(strapiId: { eq: $id }) {
       strapiId
       title
       updated_at
@@ -37,7 +37,7 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
               ...GatsbyImageSharpFluidLimitPresentationSize
             }
-          }
+        }
       }
       skills {
         type
@@ -46,7 +46,6 @@ export const query = graphql`
           used
         }
       }
-    }
     }
   }
 `

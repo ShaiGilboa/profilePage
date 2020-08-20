@@ -18,7 +18,7 @@ interface CategoryProps {
 
 export const query = graphql`
   query Category($id: Int!) {
-    projects: allStrapiProject(filter: { category: { id: { eq: $id } } }) {
+    projects: allStrapiProjects(filter: { created_by: { id: { eq: $id } } }) {
       edges {
         node {
           strapiId

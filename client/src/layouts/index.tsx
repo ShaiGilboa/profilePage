@@ -39,7 +39,7 @@ const IndexLayout: React.FC<Props> = ({ children }) => (
             description
           }
         }
-        allStrapiProject {
+        allStrapiProjects {
           edges {
             node {
               strapiId
