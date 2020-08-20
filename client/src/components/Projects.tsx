@@ -15,14 +15,14 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     <div>
       <div className="uk-child-width-1-2" data-uk-grid>
         <div>
-          {leftProjects.map(article => {
-            return <Card article={article} key={`article__${article.node.id}`} />
+          {leftProjects.map(project => {
+            return <Card project={project} key={`project__${project.node.id}`} />
           })}
         </div>
         <div>
           <div className="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
-            {rightProjects.map(article => {
-              return <Card article={article} key={`article__${article.node.id}`} />
+            {rightProjects.map(project => {
+              return <Card project={project} key={`project__${project.node.id}`} />
             })}
           </div>
         </div>

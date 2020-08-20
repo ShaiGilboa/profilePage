@@ -29,13 +29,6 @@ module.exports = {
         queryLimit: 1000
       }
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     name: 'content',
-    //     path: `${__dirname}/src/content`
-    //   }
-    // },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -69,6 +62,7 @@ module.exports = {
     },
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
+    `gatsby-transformer-remark`,
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
